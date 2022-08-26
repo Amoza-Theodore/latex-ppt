@@ -1,0 +1,406 @@
+\documentclass[11pt]{beamer}
+\usepackage{ctex}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usetheme{CambridgeUS}
+
+% listing code settings
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{backcolour}{rgb}{0.95, 0.95, 0.92}
+\lstset{
+	backgroundcolor=\color{backcolour},
+	basicstyle=\ttfamily\footnotesize,
+	tabsize=2, breaklines=true,
+	frame=single
+}
+
+
+\begin{document}
+	\title{\LaTeX 入门}
+	\subtitle{第4章 玩转数学公式}
+	\date{2022年8月20日}
+	\begin{frame}[plain]
+		\maketitle
+	\end{frame}
+	
+\part{数学模式概说}	
+
+\begin{frame}[fragile]{数学模式概说}
+\begin{lstlisting}
+交换律是 $a+b=b+a$，如 $1+2=2+1=3$。
+
+不能用 a+b=b+a，1+2=2+1=3。
+\end{lstlisting}
+\begin{lstlisting}
+\usepackage{amsthm}
+证毕符号：\qedsymbol 或 $\qedsymbol$。
+\end{lstlisting}
+\begin{lstlisting}
+交换律是
+\[ a+b=b+a, \]
+如
+\[
+1+2=2+1=3.
+\]
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{数学模式概说}
+\begin{lstlisting}
+\begin{equation}
+a+b=b+a \label{eq:commutative}
+\end{equation}
+\end{lstlisting}
+\begin{lstlisting}
+\usepackage{amsmath}
+
+$\text{被减数} - \text{减数} = \text{差}$
+
+已知的变量有 $a$, $b$, $c$, $d$, $S$, $R$ 和 $T$。
+\end{lstlisting}
+\end{frame}
+
+\part{数学结构}
+\section{上标与下标}
+
+\begin{frame}[fragile]{数学结构}{上标与下标}
+\begin{lstlisting}
+$A_{ij} = 2^{i+j}$
+\end{lstlisting}
+
+\begin{lstlisting}
+$A_i^k = B^k_i$ \qquad
+$K_{n_i} = K_{2^i} = 2^{n_i} = 2^{2^i}$ \qquad
+$3^{3^{3^{\cdot^{\cdot^{\cdot^3}}}}}$
+\end{lstlisting}
+\begin{lstlisting}
+$a = a’$, $b_0’ = b_0’’$,
+${c’}^2 = (c’)^2$
+\end{lstlisting}
+\begin{lstlisting}
+$A = 90^\circ$
+
+\newcommand\degree{^\circ}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{数学结构}{上标与下标}
+\begin{lstlisting}
+\[
+	\max_n f(n) = \sum_{i=0}^n A_i
+\]
+\end{lstlisting}
+\begin{lstlisting}
+% 导言区 \DeclareMathOperator\dif{d\!}
+\[ \int_0^1 f(t) \dif t
+= \iint_D g(x,y) \dif x \dif y \]
+\end{lstlisting}
+\begin{lstlisting}
+$\max_n f(n) = \sum_0^n A_i$
+\end{lstlisting}
+\begin{lstlisting}
+% \usepackage{mathtools}
+$\prescript{n}{m}{H}_i^j < L$
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{数学结构}{上标与下标}
+\begin{lstlisting}
+$\overset{*}{X}$ \qquad
+$\underset{*}{X}$ \qquad
+$\overset{*}{\underset{\dag}{X}}$
+\end{lstlisting}
+\begin{lstlisting}
+$A_m{}^n$ 或 $A_m^{\phantom{m}n}$
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{数学结构}{上标与下标}
+\begin{lstlisting}
+% 导言区 \usepackage{mhchem}
+醋中主要是 \ce{H2O}，含有 \ce{CH3COO-}。
+
+\ce{^{227}_{90}Th} 元素具有强放射性。
+\end{lstlisting}
+\begin{lstlisting}
+\begin{equation}
+\ce{2H2 + O2 ->[\text{燃烧}] 2H2O}
+\end{equation}
+\end{lstlisting}
+\end{frame}
+
+\section{上下画线与花括号}
+
+\begin{frame}[fragile]{数学结构}{上下画线与花括号}
+\begin{lstlisting}
+$\overline{a+b} =
+	\overline a + \overline b$ \\
+$\underline a = (a_0, a_1, a_2, \dots)$
+\end{lstlisting}
+\begin{lstlisting}
+$ \overline{\underline{\underline a}
++ \overline{b}^2} - c^{\underline n} $
+\end{lstlisting}
+\begin{lstlisting}
+$\overleftarrow{a+b}$\\
+$\overrightarrow{a+b}$\\
+$\overleftrightarrow{a+b}$\\
+$\underleftarrow{a-b}$\\
+$\underrightarrow{a-b}$\\
+$\underleftrightarrow{a-b}$
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{数学结构}{上下画线与花括号}
+\begin{lstlisting}
+$\overbrace{a+b+c} = \underbrace{1+2+3}$
+\end{lstlisting}
+\begin{lstlisting}
+\[ ( \overbrace{a_0,a_1,\dots,a_n}
+	^{\text{共 $n+1$ 项}} ) =
+( \underbrace{0,0,\dots,0}_{n} , 1 ) \]
+\end{lstlisting}
+\begin{lstlisting}
+\underbracket[<线宽>][<伸出高度>]{<内容>}
+\overbracket[<线宽>][<伸出高度>]{<内容>}
+
+\[ \underbracket{\overbracket{1+2}+3}_3 \]
+\end{lstlisting}
+\end{frame}
+
+\section{分式}
+
+\begin{frame}[fragile]{数学结构}{分式}
+\begin{lstlisting}
+\[
+\frac 12 + \frac 1a = \frac{2+a}{2a}
+\]
+\end{lstlisting}
+\begin{lstlisting}
+通分计算 $\frac 12 + \frac 1a$
+得 $\frac{2+a}{2a}$
+\end{lstlisting}
+\begin{lstlisting}
+\[ \frac{1}{\frac 12 (a+b)}
+= \frac{2}{a+b} \]
+\end{lstlisting}
+\begin{lstlisting}
+% \usepackage{xfrac}
+区别 $\sfrac 1a + b$ 和 $1/(a+b)$
+\end{lstlisting}
+\begin{lstlisting}
+\[
+(a+b)^2 = \binom 20 a^2
++ \binom 21 ab + \binom 22 b^2
+\]
+\end{lstlisting}
+\end{frame}
+
+\section{根式}
+
+\begin{frame}[fragile]{数学结构}{根式}
+\begin{lstlisting}
+$\sqrt 4 = \sqrt[3]{8} = 2$
+\end{lstlisting}
+\begin{lstlisting}
+\[
+\sqrt[n]{\frac{x^2 + \sqrt 2}{x+y}}
+\]
+\end{lstlisting}
+\begin{lstlisting}
+\[
+(x^p+y^q)^{\frac{1}{1/p+1/q}}
+\]
+\end{lstlisting}
+\begin{lstlisting}
+$\sqrt b \sqrt y$ \qquad
+$\sqrt{\mathstrut b} \sqrt{\mathstrut y}$
+\end{lstlisting}
+\end{frame}
+
+\section{矩阵}
+
+\begin{frame}[fragile]{数学结构}{矩阵}
+\begin{lstlisting}
+\[
+A = \begin{pmatrix}
+	a_{11} & a_{12} & a_{13} \\
+	0 & a_{22} & a_{23} \\
+	0 & 0 & a_{33}
+\end{pmatrix}
+\]
+\end{lstlisting}
+\begin{lstlisting}
+\[
+A = \begin{bmatrix}
+	a_{11} & \dots & a_{1n} \\
+	& \ddots & \vdots \\
+	0 & & a_{nn}
+\end{bmatrix}_{n\times n}
+\]
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{数学结构}{矩阵}
+\begin{lstlisting}
+\[ \begin{pmatrix}
+	1 & \frac 12 & \dots & \frac 1n \\
+	\hdotsfor{4} \\
+	m & \frac m2 & \dots & \frac mn
+\end{pmatrix} \]
+\end{lstlisting}
+\begin{lstlisting}
+\[ \begin{pmatrix}
+\begin{matrix} 1&0\\0&1 \end{matrix}
+& \text{\Large 0} \\
+\text{\Large 0} &
+\begin{matrix} 1&0\\0&-1 \end{matrix}
+\end{pmatrix} \]
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{数学结构}{矩阵}
+\begin{lstlisting}
+复数 $z = (x,y)$ 也可用矩阵 \begin{math}
+\left( \begin{smallmatrix}
+x & -y \\ y & x
+\end{smallmatrix} \right)
+\end{math} 来表示。
+\end{lstlisting}
+\begin{lstlisting}
+\[
+\sum_{\substack{0<i<n \\ 0<j<i}} A_{ij}
+\]
+\end{lstlisting}
+\end{frame}
+
+\part{符号与类型}
+
+\begin{frame}[fragile]{符号与类型}
+\begin{center}	$\dots$ \end{center}
+\end{frame}
+
+\part{多行公式}
+
+\section{罗列多个公式}
+
+\begin{frame}[fragile]{多行公式}{罗列多个公式}
+\begin{lstlisting}
+\begin{gather}
+a+b = b+a \\
+ab = ba
+\end{gather}
+\end{lstlisting}
+\begin{lstlisting}
+\begin{gather*}
+3+5 = 5+3 = 8 \\
+3\times 5 = 5\times 3
+\end{gather*}
+\end{lstlisting}
+\begin{lstlisting}
+\begin{gather}
+3^2 + 4^2 = 5^2 \notag \\
+5^2 + 12^2 = 13^2 \notag \\
+a^2 + b^2 = c^2
+\end{gather}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{多行公式}{罗列多个公式}
+\begin{lstlisting}
+\begin{align}
+	x &= t + \cos t + 1 \\
+	y &= 2\sin t
+\end{align}
+\end{lstlisting}
+\begin{lstlisting}
+\begin{align*}
+x &= t & x &= \cos t
+& x &= t \\
+y &= 2t & y &= \sin(t+1) & y &= \sin t
+\end{align*}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{多行公式}{罗列多个公式}
+\begin{lstlisting}
+\begin{align*}
+	& (a+b)(a^2-ab+b^2) \notag \\
+={}	& a^3 - a^2b + ab^2 + a^2b
+	  - ab^2 + b^2 \notag \\
+={}	& a^3 + b^3 \label{eq:cubesum}
+\end{align*}
+\end{lstlisting}
+\begin{lstlisting}
+\begin{align*}
+x^2 + 2x &= -1
+\intertext{移项得}
+x^2 + 2x + 1 &= 0
+\end{align*}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{多行公式}{罗列多个公式}
+\begin{lstlisting}
+设 $G$ 是一个带有运算 $*$ 的集合，则 $G$ 是\emph{群}，当且仅当：
+\begin{subequations}\label{eq:group}
+\begin{alignat}{2}
+\forall a,b,c &\in G, &\qquad (a*b)*c &= a*(b*c);\label{subeq:assoc}\\
+\exists e, \forall a &\in G, & e*a &= a; \\
+\forall a, \exists b &\in G, & b*a &= e.
+\end{alignat}
+\end{subequations}
+式~\eqref{eq:group} 的三个条件中，\eqref{subeq:assoc}~又称为结合律。
+\end{lstlisting}
+\end{frame}
+
+\section{拆分单个公式}
+
+\begin{frame}[fragile]{多行公式}{拆分单个公式}
+\begin{lstlisting}
+\begin{equation} \begin{split}  % 不产生编号
+\cos 2x &= \cos^2 x - \sin^2 x \\
+		&= 2\cos^2 x - 1
+\end{split} \end{equation}
+\end{lstlisting}
+\begin{lstlisting}
+\begin{equation}\label{eq:trigonometric}
+\begin{split}
+	\frac12 (\sin(x+y) + \sin(x-y))
+	&= \frac12(\sin x\cos y + \cos x\sin y) \\
+	&\quad + \frac12(\sin x\cos y - \cos x\sin y) \\
+	&= \sin x\cos y
+\end{split}
+\end{equation}
+\end{lstlisting}
+\end{frame}
+
+\section{将公式组合成块}
+
+\begin{frame}[fragile]{多行公式}{将公式组合成块}
+\begin{lstlisting}
+\[ \left. \begin{gathered}
+	S \subseteq T \\
+	S \supseteq T
+\end{gathered} \right\}
+\implies S = T \]
+\end{lstlisting}
+\end{frame}
+\begin{frame}[fragile]{多行公式}{将公式组合成块}
+\begin{lstlisting}
+\begin{equation}\label{eq:trinary}
+\begin{aligned} x+y &= -1 \\ x+y+z &= 2 \\ xyz &= -6 \end{aligned}
+\implies
+\begin{aligned} x+y &= -1 \\ xy &= -2 \\ z &= 3 \end{aligned}
+\implies
+\begin{alignedat}{3}
+		    x &= 1,  &\quad y &= -2, &\quad z &= 3 \\
+\text{或\ } x &= -2, &      y &= 1, &       z &= 3
+\end{alignedat}
+\end{equation}
+\end{lstlisting}
+\end{frame}
+
+\end{document}

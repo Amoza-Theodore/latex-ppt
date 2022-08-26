@@ -1,0 +1,302 @@
+\documentclass[11pt]{beamer}
+\usepackage[heading=true]{ctex}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{listings}
+\usetheme{CambridgeUS}
+
+% listing code settings
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{backcolour}{rgb}{0.95, 0.95, 0.92}
+\lstset{
+	backgroundcolor=\color{backcolour},
+	basicstyle=\ttfamily\footnotesize,
+	tabsize=2, breaklines=true,
+	frame=single
+}
+
+\begin{document}
+	\title{\LaTeX 入门}
+	\subtitle{第5章 绘制图表}
+	\date{2022年8月25日}
+	%\subject{}
+%	\setbeamercovered{transparent}
+%	\setbeamertemplate{navigation symbols}{}
+	\begin{frame}[plain]
+		\maketitle
+	\end{frame}
+	
+\part{\LaTeX 中的表格}	
+
+\section{tabular和array}
+
+\begin{frame}[fragile]{\LaTeX 中的表格}{tabular和array}
+\begin{lstlisting}
+\begin{tabular}{lcr}
+left & center & right \\
+本列左对齐 & 本列居中
+	& 本列右对齐 \\
+\end{tabular}
+\end{lstlisting}
+\begin{lstlisting}
+\begin{tabular}{ll}
+\bfseries 功能 & \bfseries 环境 \\
+表格 & \ttfamily tabular \\
+对齐 & \ttfamily tabbing \\
+\end{tabular}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{\LaTeX 中的表格}{tabular和array}
+\begin{lstlisting}
+\[
+\begin{array}{r|r}
+	\frac12 & 0 \\
+	\hline
+	0 & -\frac12 \\
+\end{array}
+\]
+\end{lstlisting}
+\begin{lstlisting}
+\begin{tabular}[b]{c}
+	上 \\ 中间 \\ 下
+\end{tabular}
+与底部对齐。
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{\LaTeX 中的表格}{tabular和array}
+\begin{lstlisting}
+\begin{tabular}{|rr|}
+	\hline
+	输入 & 输出 \\ \hline
+	$-2$ & 4 \\
+	0 & 0 \\
+	2 & 4 \\
+	\hline
+\end{tabular}
+\qquad
+输入与输出有关系 $y = x^2$
+\end{lstlisting}
+\end{frame}
+
+\section{表格单元的合并与分割}
+
+\begin{frame}[fragile]{\LaTeX 中的表格}{表格单元的合并与分割}
+\begin{lstlisting}
+\begin{tabular}{|r|r|}
+	\hline
+	\multicolumn{2}{|c|}{成绩} \\ \hline
+	语文 & 数学 \\ \hline
+	87 & 100 \\ \hline
+\end{tabular}
+\end{lstlisting}
+\begin{lstlisting}
+% 导言区 \usepackage{multirow}
+\begin{tabular}{|c|r|r|}
+\hline
+\multirow{2}*{姓名} &
+\multicolumn{2}{c|}{成绩} \\ \cline{2-3}
+	& 语文 & 数学 \\ \hline
+张三 & 87  & 100 \\ \hline
+\end{tabular}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{\LaTeX 中的表格}{表格单元的合并与分割}
+\begin{lstlisting}
+% 导言区 \usepackage{makecell}
+\begin{tabular}{|r|r|} \hline
+\makecell{处理前\\数据} &
+\makecell{处理后\\数据} \\ \hline
+4934 & 8945 \\ \hline
+\end{tabular}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{\LaTeX 中的表格}{表格单元的合并与分割}
+\begin{lstlisting}
+% 导言区 \usepackage{multirow,makecell}
+\begin{tabular}{|c|r|}
+\hline
+\multirowcell{3}{各科\\成绩} & 78 \\
+\cline{2-2} & 82 \\ \cline{2-2}
+& 86 \\ \hline
+\end{tabular}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{\LaTeX 中的表格}{表格单元的合并与分割}
+\begin{lstlisting}
+% 导言区 \usepackage{diagbox}
+\begin{tabular}{|c|*{4}{c}|}
+	\hline
+	\diagbox{天干}{地支} & 子 & 丑 & 寅 & 卯 \\
+	\hline
+	甲 & 1 && 51 & \\
+	乙 && 2 && 52 \\
+	丙 & 13 && 3 & \\
+	丁 && 14 && 4\\
+	\hline
+\end{tabular}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{\LaTeX 中的表格}{表格单元的合并与分割}
+\begin{lstlisting}
+% 导言区 \usepackage{diagbox}
+\begin{tabular}{|c|*{4}{c}|}
+	\hline
+	\diagbox{天干}{序号}{地支} & 子 & 丑 & 寅 & 卯 \\
+	\hline
+	甲 & 1 && 51 & \\
+	乙 && 2 && 52 \\
+	丙 & 13 && 3 & \\
+	丁 && 14 && 4\\
+	\hline
+\end{tabular}
+\end{lstlisting}
+\end{frame}
+
+\section{三线表与表线控制}
+
+\begin{frame}[fragile]{\LaTeX 中的表格}{三线表与表线控制}
+\begin{lstlisting}
+\begin{tabular}{ccccc}
+	\toprule
+	序号 & 性别 & 年龄 & 身高/cm & 体重/kg \\
+	\midrule
+	1 & F & 14 & 156 & 42 \\
+	2 & F & 16 & 158 & 45 \\
+	3 & M & 14 & 162 & 48 \\
+	4 & M & 15 & 163 & 50 \\
+	\bottomrule
+\end{tabular}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{\LaTeX 中的表格}{三线表与表线控制}
+\begin{lstlisting}
+% 导言区 \usepackage{multirow,booktabs}
+\begin{tabular}{*{6}{c}}
+	\bottomrule
+	\multirow{2}*{姓名} & \multicolumn{2}{c}{文科} &
+	\multicolumn{2}{c}{理科} & \\
+	\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-6}
+	\morecmidrules\cmidrule(lr){6-6}
+	& 历史 & 文学 & 物理 & 化学 & 总评 \\
+	\midrule
+	张三 & A & A & B & A & A \\
+	\bottomrule
+\end{tabular}
+\end{lstlisting}
+\end{frame}
+
+\part{插图与变换}
+
+\section{graphicx与插图}
+
+\begin{frame}[fragile]{插图与变换}{graphicx与插图}
+\begin{lstlisting}
+\includegraphics{ai.png}
+\includegraphics[width=2em]{ai.png}
+\includegraphics[height=1cm]{ai.png}
+\includegraphics[scale=0.5]{ai.png}
+\end{lstlisting}
+\begin{lstlisting}
+\graphicspath{{figures/}} % 本书的设置，图片在当前目录下的 figures 目录
+\graphicspath{{pdf/}{png/}{jpg/}} % 按图片类型管理的
+\end{lstlisting}
+\end{frame}
+
+\part{浮动体与标题控制}
+
+\section{浮动体}
+
+\begin{frame}[fragile]{浮动体与标题控制}{浮动体}
+\begin{lstlisting}
+\begin{figure}[htbp] % 允许各个位置
+	\centering
+	\includegraphics{ai.png}
+\end{figure}
+\begin{table} % 默认在页面顶部或单独一页
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		图形 & \verb=figure= 环境 \\
+		\hline
+		表格 & \verb=table= 环境 \\
+		\hline
+	\end{tabular}
+\end{table}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{浮动体与标题控制}{浮动体}
+\begin{lstlisting}
+\begin{figure}[htp]
+	\centering
+	\includegraphics{lion.eps}
+	\caption[小狮子]{\TeX{} 系统的吉祥物——小狮子}\label{fig-lion}
+	% 或作 \caption[小狮子]{\label{fig-lion}\TeX{} 系统的吉祥物——小狮子}
+\end{figure}
+\end{lstlisting}
+\end{frame}
+
+\section{并排与子图表}
+
+\begin{frame}[fragile]{浮动体与标题控制}{并排与子图表}
+\begin{lstlisting}
+\begin{table}
+	\centering
+	\caption{并排的表格}
+	\begin{tabular}{|c|c|}
+		\hline 图 & 表 \\ \hline
+	\end{tabular}%
+	\qquad
+	\begin{tabular}{|c|c|}
+		\hline Figure & Table \\ \hline A & B \\ \hline
+	\end{tabular}
+\end{table}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{浮动体与标题控制}{并排与子图表}
+\begin{lstlisting}
+\begin{figure}
+\begin{minipage}[b]{.5\textwidth}
+	\centering
+	\includegraphics[width=.4\textwidth]{texlive-lion.pdf}
+	\caption{\TeX\ Live 吉祥物狮子}
+\end{minipage}%
+\begin{minipage}[b]{.5\textwidth}
+	\centering
+	\begin{tabular}{|*{5}{c|}}
+		\hline
+		1996 & 1998 & 1999 & 2000 & 2001 \\ \hline
+		2002 & 2003 & 2004 & 2005 & 2007 \\ \hline
+		2008 & 2009 & 2010 & \dots & \\
+		\hline
+	\end{tabular}
+	\caption{\TeX\ Live 的版本}
+\end{minipage}
+\end{figure}
+\end{lstlisting}
+\end{frame}
+
+\section{浮动控制与float宏包}
+
+\begin{frame}[fragile]{浮动体与标题控制}{浮动控制与float宏包}
+\begin{lstlisting}
+% \usepackage{float}
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=1cm]{lion.eps}
+	\caption{不浮动的图表}
+\end{figure}
+\end{lstlisting}
+\end{frame}
+
+\end{document}

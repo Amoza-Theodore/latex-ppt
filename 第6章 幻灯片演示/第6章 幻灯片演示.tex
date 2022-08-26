@@ -1,0 +1,116 @@
+\documentclass[11pt]{beamer}
+\usepackage[heading=true]{ctex}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{listings}
+\usetheme{CambridgeUS}
+
+% listing code settings
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{backcolour}{rgb}{0.95, 0.95, 0.92}
+\lstset{
+	backgroundcolor=\color{backcolour},
+	basicstyle=\ttfamily\footnotesize,
+	tabsize=2, breaklines=true,
+	frame=single
+}
+
+\begin{document}
+	\title{\LaTeX 入门}
+	\subtitle{第6章 幻灯片演示}
+	\date{2022年8月26日}
+	%\subject{}
+	%	\setbeamercovered{transparent}
+	%	\setbeamertemplate{navigation symbols}{}
+	\begin{frame}[plain]
+		\maketitle
+	\end{frame}
+
+\section{帧}
+
+\begin{frame}[fragile]{帧}
+\begin{lstlisting}
+%\begin{frame}
+	这是简单的一帧。
+	帧里的内容是垂直居中的。
+%\end{frame}
+\end{lstlisting}
+\begin{lstlisting}
+%\begin{frame}
+	\frametitle{标题}
+	\framesubtitle{小标题}
+	这是简单的一帧。
+%\end{frame}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{帧}
+\begin{lstlisting}
+%\begin{frame}{古中国数学}{定理发现}
+中国在 3000 多年前就知道勾股数的概念，比古希腊更早一些。
+
+《周髀算经》的记载：
+\begin{itemize}
+\item 公元前 11 世纪，商高答周公问：
+\begin{quote}
+勾广三，股修四，径隅五。
+\end{quote}
+\item 又载公元前 7--6 世纪陈子答荣方问，表述了勾股定理的一般形式：
+\begin{quote}
+若求邪至日者，以日下为勾，日高为股，勾股各自乘，并而开方除之，得邪至日。
+\end{quote}
+\end{itemize}
+%\end{frame}
+\end{lstlisting}
+\end{frame}
+
+\section{标题与文档信息}
+
+\begin{frame}[fragile]{标题与文档信息}
+\begin{lstlisting}
+% beamer 导言区
+\title{杂谈勾股定理}
+\subtitle{数学史讲座之一}
+\institute{九章学堂}
+\author{张三}
+\date{\today}
+\subject{勾股定理}
+\keywords{勾股定理, 历史}
+\end{lstlisting}
+\begin{lstlisting}
+% 等价于 \maketitle
+%\begin{frame}
+	\titlepage
+%\end{frame}
+\end{lstlisting}
+\end{frame}
+
+\section{分节与目录}
+
+\begin{frame}[fragile]{分节与目录}
+\begin{lstlisting}
+%\begin{frame}{目录}
+	\tableofcontents
+%\end{frame}
+\section{勾股定理在古代}
+...
+\end{lstlisting}
+\begin{lstlisting}
+\part{引言}
+%\begin{frame}
+	\partpage
+%\end{frame}
+\end{lstlisting}
+\begin{lstlisting}
+% 导言区
+\AtBeginSection[]{ % 空的可选项表示 \section* 前不加目录
+%	\begin{frame}{本节提要}
+		\tableofcontents[currentsection]
+%	\end{frame}
+}
+\end{lstlisting}
+\end{frame}
+	
+\end{document}

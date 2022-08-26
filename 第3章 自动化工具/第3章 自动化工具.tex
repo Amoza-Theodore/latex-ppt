@@ -1,0 +1,155 @@
+\documentclass[11pt]{beamer}
+\usepackage{ctex}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usetheme{CambridgeUS}
+
+\usepackage{listings}
+
+\usepackage{xcolor}
+
+%New colors defined below
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour}, commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+%"mystyle" code listing set
+\lstset{style=mystyle}
+
+
+\begin{document}
+	%\author{}
+	\title{\LaTeX 入门}
+	\subtitle{第3章 自动化工具}
+	%\logo{}
+	%\institute{}
+	\date{2022年8月16日}
+	%\subject{}
+	%\setbeamercovered{transparent}
+	%\setbeamertemplate{navigation symbols}{}
+	\begin{frame}[plain]
+		\maketitle
+	\end{frame}
+	
+\part{目录}
+
+\section{目录和图表目录}
+
+\begin{frame}[fragile]{目录}{目录和图表目录}
+\begin{lstlisting}
+\documentclass{article}
+\begin{document}
+	\tableofcontents
+	\section{Foo}
+	\subsection{blah}
+	\section{Bar}
+\end{document}
+\end{lstlisting}
+\end{frame}
+
+\section{控制目录内容}
+
+\begin{frame}[fragile]{目录}{控制目录内容}
+\begin{lstlisting}
+\addcontentsline{toc}{section}{Title}
+\maketitle
+\tableofcontents
+\end{lstlisting}
+
+\begin{lstlisting}
+% 把目录、参考文献等条目加入目录
+\usepackage{tocbibind}
+\end{lstlisting}
+\end{frame}
+
+\part{交叉引用}
+
+\section{电子文档与超链接}
+
+\begin{frame}[fragile]{交叉引用}{电子文档与超链接}
+\begin{lstlisting}
+\usepackage{hyperref}
+
+\url{http://bbs.ctex.org/forum.php?mod=viewthread&tid=48244#pid337079}
+\href{http://bbs.ctex.org/}{CTeX 论坛}
+\end{lstlisting}
+\end{frame}
+
+\part{BIBTEX与文献数据库}
+
+\section{BIBTEX基础}
+
+\begin{frame}[fragile]{BIBTEX与文献数据库}{BIBTEX基础}
+\begin{lstlisting}
+% tex.bib 中的一条
+@BOOK{mittelbach2004,
+	title = {The {{\LaTeX}} Companion},
+	publisher = {Addison-Wesley},
+	year = {2004},
+	author = {Frank Mittelbach and Michel Goossens},
+	series = {Tools and Techniques for Computer Typesetting},
+	address = {Boston},
+	edition = {Second}
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{BIBTEX与文献数据库}{BIBTEX基础}
+\begin{lstlisting}
+\bibliographystyle{alpha}  % style on book
+
+\TeX{} and \LaTeX{} see \cite{knuthtex1986}, \cite{lamport1994}.
+\nocite{mittelbach2004}
+
+\bibliography{tex}% 表示使用的数据库是 tex.bib
+\end{lstlisting}
+
+\begin{lstlisting}
+xelatex foo.tex
+bibtex foo.aux
+xelatex foo.tex
+xelatex foo.tex
+\end{lstlisting}
+\end{frame}
+
+\section{用natbib定制文献格式}
+
+\begin{frame}[fragile]{BIBTEX与文献数据库}{用natbib定制文献格式}
+\begin{lstlisting}
+% 导言区
+% \usepackage{natbib}
+% \bibliographystyle{plainnat}
+% 正文
+在 \citet{lamport1994} 中提到了利用 \BibTeX{} 自动处理文献的方式，在另一本书 \citep{mittelbach2004} 中则有进一步的格式与工具的说明
+\end{lstlisting}
+
+\begin{lstlisting}
+\usepackage[numbers,square]{natbib}
+\end{lstlisting}
+\begin{lstlisting}
+\usepackage[numbers,sort&compress]{natbib}
+\end{lstlisting}
+\end{frame}
+
+\end{document}

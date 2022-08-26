@@ -1,0 +1,613 @@
+\documentclass[11pt]{beamer}
+\usepackage{ctex}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{frame}
+\usepackage{fancyvrb}
+\usetheme{CambridgeUS}
+
+
+\begin{document}
+	%\author{}
+	\title{\LaTeX 入门}
+	\subtitle{第2章 组织你的文本}
+	%\logo{}
+	%\institute{}
+	\date{2022年8月3日}
+	%\subject{}
+	%\setbeamercovered{transparent}
+	%\setbeamertemplate{navigation symbols}{}
+	\begin{frame}[plain]
+		\maketitle
+	\end{frame}
+
+\part{文字与符号}
+
+\section{正确使用标点}
+	
+\begin{frame}[fragile]{文字与符号}{正确使用标点}
+\begin{Verbatim}[tabsize=2]
+An inter-word dash or, hyphen, as in X-ray.
+
+A medium dash for number ranges, like 1--2.
+
+A punctuation dash---like this. \\
+
+Good: One, two, three\dots
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{文字与符号}{正确使用标点}
+\begin{Verbatim}[tabsize=2]
+\# \quad \$ \quad \% \quad \& \quad
+\{ \quad \} \quad \_ \quad
+\textbackslash
+
+Happy \TeX ing. Happy \TeX\ ing.
+Happy \TeX{} ing. Happy {\TeX} ing.
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{文字与符号}{正确使用标点}
+\begin{Verbatim}[tabsize=2]
+\begin{align*}
+	[2 - (3+5)]\times 7 &= 42 \\[2cm]
+	[2 + (3-5)]\times 7 &= 0
+\end{align*}
+\end{Verbatim}
+\end{frame}
+
+\section{特殊符号}
+
+\begin{frame}[fragile]{文字与符号}{特殊符号}
+\begin{Verbatim}[tabsize=2]
+\usepackage[utf8]{inputenc}
+
+\S \dag \ddag \P \copyright \textregistered 
+\texttrademark \pounds \textbullet
+\end{Verbatim}
+\end{frame}
+
+\section{字体}
+
+\begin{frame}[fragile]{文字与符号}{字体}
+\begin{Verbatim}[tabsize=2]
+\textbf{This is a paragraph of bold and
+\textit{italic font, sometimes returning
+to \textnormal{normal font} is necessary.}}
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{文字与符号}{字体}
+\begin{Verbatim}[tabsize=2]
+{\songti 宋体} \quad {\heiti 黑体} \quad
+{\fangsong 仿宋} \quad {\kaishu 楷书}
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{文字与符号}{字体}
+\begin{Verbatim}[tabsize=2]
+You \emph{should} use fonts carefully.
+
+\textit{You \emph{should} use fonts carefully.}
+
+This is {\em emphasized} text.
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{文字与符号}{字体}
+\begin{Verbatim}[tabsize=2]
+\newcommand\Emph{\textbf}
+This is \Emph{emphasized} text.
+
+\underline{Emphasized} text and \underline{another}.
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{文字与符号}{字体}
+\begin{Verbatim}[tabsize=2]
+% 导言区用 \usepackage{ulem}
+\uline{Emphasized} text and \uline{another}.
+A \emph{very very very very very very very
+	very very very very very} long sentence.
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{文字与符号}{字体}
+\begin{Verbatim}[tabsize=2]
+% 导言区用 \usepackage[normalem]{ulem}
+\uline{Emphasized} text and \uline{another}.
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{文字与符号}{字体}
+\begin{Verbatim}[tabsize=2]
+\uuline{urgent}\qquad \uwave{boat}\qquad
+\sout{wrong}\qquad \xout{removed}\qquad
+\dashuline{dashing}\qquad \dotuline{dotty}
+\end{Verbatim}
+\end{frame}
+
+\section{字号与间距}
+
+\begin{frame}[fragile]{文字与符号}{字号与间距}
+\begin{Verbatim}[tabsize=2]
+\tiny \scriptsize \footnotesize \small \normalsize 
+\large \Large \LARGE \huge \Huge
+\zihao{0}
+
+The text can be {\Large larger}.
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{文字与符号}{字号与间距}
+\begin{Verbatim}[tabsize=2]
+\usepackage{setspace}% preamble
+
+\setstretch{2.0}
+\singlespacing \onehalfspacing \doublespacing
+\end{Verbatim}
+\end{frame}
+
+\section{水平间距与盒子}
+
+\begin{frame}[fragile]{文字与符号}{水平间距与盒子}
+\begin{tabular}{lp{.9\linewidth}}
+pt & point 点（欧美传统排版的长度单位，有时叫做“磅”） \\
+pc & pica（1 pc = 12 pt，相当于四号字大小） \\
+in & inch 英寸（1 in = 72.27 pt） \\
+bp & big point 大点（在 PostScript 等其他电子排版领域的 point 都指大点，1 in = 72 bp） \\
+cm & centimeter 厘米（2:54 cm = 1 in） \\
+mm & millimeter 毫米（10 mm = 1 cm） \\
+dd & didot point（欧洲大陆使用，1157 dd = 1238 pt） \\
+cc & cicero（欧洲大陆使用，pica 的对应物，1 cc = 12 dd） \\
+sp & scaled point（TEX中最小的长度单位，所有长度都是它的倍数，65536 sp = 1 pt） \\
+em & 全身（字号对应的长度，等于一个 \verb|\quad| 的长度，也称为“全方”。本义是大写字母 M 的宽度） \\
+ex & x-height（与字号相关，由字体定义。本义是小写字母 x 的高度） \\
+\end{tabular}
+\end{frame}
+
+\begin{frame}[fragile]{文字与符号}{水平间距与盒子}
+\begin{Verbatim}[tabsize=2]
+Space\hspace{1cm}1cm
+
+text\\
+\hspace{1cm}text\\
+\hspace*{1cm}text
+
+left \hspace{\fill} middle \hfill right
+left\hspace{\stretch{2}}$2/3$\hspace{\fill}right
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{文字与符号}{水平间距与盒子}
+盒子（box）是 TEX 中的基本处理单位，一个字符、一行文字、一个页面、一张表格在 TEX 中都是一个盒子。
+	
+\verb|\makebox|[<宽度>][<位置>]{<内容>}
+对齐参数可取 c（中）、l（左）、r（右）、s（分散），默认居中。
+	
+\begin{Verbatim}[tabsize=2]
+\makebox[1em]{\textbullet}text \\
+\makebox[5cm][s]{some stretched text}
+\end{Verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]{文字与符号}{水平间距与盒子}
+\begin{Verbatim}[tabsize=2]
+\fbox{framed} \\
+\framebox[3cm][s]{framed box}
+\end{Verbatim}
+\end{frame}
+
+\part{段落与文本环境}
+
+\section{正文段落}
+
+\begin{frame}[fragile]{段落与文本环境}{正文段落}
+\begin{Verbatim}[tabsize=2]
+\raggedright
+% \raggedleft, \centering
+English words like ‘technology’ stem from a
+Greek root beginning with the letters τεχ\dots
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{段落与文本环境}{正文段落}
+\begin{Verbatim}[tabsize=2]
+\begin{center}
+	居中
+\end{center}
+\end{Verbatim}
+\end{frame}
+
+\section{文本环境}
+
+\begin{frame}[fragile]{段落与文本环境}{文本环境}
+\begin{Verbatim}[tabsize=2]
+\begin{abstract}
+	本课讲解 \LaTeX{} 的使用。
+\end{abstract}
+
+\ctexset{abstractname={摘\quad 要}}
+\end{Verbatim}
+\end{frame}
+
+\section{列表环境}
+
+\begin{frame}[fragile]{段落与文本环境}{列表环境}
+\begin{Verbatim}[tabsize=2]
+\begin{enumerate}
+	\item 中文
+	\item English
+	\item Français
+\end{enumerate}
+
+\begin{itemize}
+	\item 中文
+	\item English
+	\item Français
+\end{itemize}
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{段落与文本环境}{列表环境}
+\begin{Verbatim}[tabsize=2]
+\begin{description}
+	\item[中文] 中国的语言文字
+	\item[English] The language of England
+	\item[Français] La langue de France
+\end{description}
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{段落与文本环境}{列表环境}
+\begin{Verbatim}[tabsize=2]
+\begin{enumerate}
+	\item 中文
+	\begin{enumerate}
+		\item 古代汉语
+		\item 现代汉语
+	\end{enumerate}
+	\item English
+	\item Français
+\end{enumerate}
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{段落与文本环境}{列表环境}
+\begin{Verbatim}[tabsize=2]
+\begin{enumerate}
+	\item 中文
+	\item[1a.] 汉语
+	\item English
+\end{enumerate}
+
+\begin{itemize}
+	\item[\dag] 中文
+	\item English
+	\item Français
+\end{itemize}
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{段落与文本环境}{列表环境}
+	\begin{Verbatim}[tabsize=2]
+% enumi, enumii, enumiii, enumiv
+\begin{enumerate}
+	\item 这是编号 \theenumi
+	\item 这是编号 \theenumi
+\end{enumerate}
+	\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{段落与文本环境}{列表环境}
+	\begin{Verbatim}[tabsize=2]
+\begin{enumerate}
+\item 编号
+	\arabic{enumi}, \roman{enumi}, \Roman{enumi},
+	\alph{enumi}, \Alph{enumi}, \fnsymbol{enumi}
+\item 编号
+	\arabic{enumi}, \roman{enumi}, \Roman{enumi},
+	\alph{enumi}, \Alph{enumi}, \fnsymbol{enumi}
+\item 编号
+	\arabic{enumi}, \roman{enumi}, \Roman{enumi},
+	\alph{enumi}, \Alph{enumi}, \fnsymbol{enumi}
+\end{enumerate}
+	\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{段落与文本环境}{列表环境}
+	\begin{Verbatim}[tabsize=2]
+\renewcommand\theenumi{\roman{enumi}}
+\renewcommand\labelenumi{(\theenumi)}
+\begin{enumerate}
+	\item 使用中文
+	\item Using English
+\end{enumerate}
+	\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{段落与文本环境}{列表环境}
+	\begin{Verbatim}[tabsize=2]
+% 计数器设置，通常在导言区
+\newcounter{mycnt}
+\setcounter{mycnt}{0}
+% 默认值就是 0
+\renewcommand\themycnt{\arabic{mycnt}}
+% 默认值就是阿拉伯数字
+% 计数器使用，通常做成自定义命令的一部分
+\stepcounter{mycnt}\themycnt 输出计数器值为 1；
+\stepcounter{mycnt}\themycnt 输出计数器值为 2；
+\addtocounter{mycnt}{1}\themycnt 输出计数器值为 3；
+\addtocounter{mycnt}{-1}\themycnt 输出计数器值为 2；
+\addtocounter{mycnt}{-1}\themycnt 输出计数器值为 1。
+	\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{段落与文本环境}{列表环境}
+	\begin{Verbatim}[tabsize=2]
+\newcounter{quiz}[section]
+\renewcommand\thequiz{\thesection-\arabic{quiz}}
+	\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{段落与文本环境}{列表环境}
+	\begin{Verbatim}[tabsize=2]
+% \usepackage{enumitem}
+\begin{enumerate}[label=(\arabic*)]
+	\item 中文
+	\item English
+	\item Français
+\end{enumerate}
+	\end{Verbatim}
+\end{frame}
+
+\section{定理类环境}
+
+\begin{frame}[fragile]{段落与文本环境}{定理类环境}
+	\begin{Verbatim}[tabsize=2]
+\newtheorem{thm}{定理} % 一般在导言区
+\begin{thm}
+直角三角形斜边的平方等于两腰的平方和。
+\end{thm}
+
+\begin{thm}[勾股定理]
+直角三角形斜边的平方等于两腰的平方和。
+\end{thm}
+	\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{段落与文本环境}{定理类环境}
+	\begin{Verbatim}[tabsize=2]
+\newtheorem{lemma}{引理}[chapter]% 按章
+\begin{lemma}偏序集可良序化。\end{lemma}
+\begin{lemma}实数集不可数。\end{lemma}
+	\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{段落与文本环境}{定理类环境}
+	\begin{Verbatim}[tabsize=2]
+\newtheorem{prop}[thm]{命题}
+\begin{prop}
+直角三角形的斜边大于直角边。
+\end{prop}
+	\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{段落与文本环境}{定理类环境}
+	\begin{Verbatim}[tabsize=2]
+% 导言区
+\usepackage[thmmarks]{ntheorem}
+{
+	% 利用分组，格式设置只作用于证明环境
+	\theoremstyle{nonumberplain}
+	\theoremheaderfont{\bfseries}
+	\theorembodyfont{\normalfont}
+	\theoremsymbol{\mbox{$\Box$}} % 放进盒子，或用 \ensuremath
+	\newtheorem{proof}{证明}
+}
+
+\begin{proof}
+证明是显然的。
+\end{proof}
+	\end{Verbatim}
+\end{frame}
+
+\section{抄录和代码环境}
+
+\begin{frame}[fragile]{段落与文本环境}{抄录和代码环境}
+	\begin{Verbatim}[tabsize=2]
+\verb”\LaTeX \& \TeX” \qquad \verb!\/}{#$%&~!
+
+显示空格 \verb*!1 2 3   4!
+	\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{段落与文本环境}{抄录和代码环境}
+	\begin{Verbatim}[tabsize=2]
+\begin{verbatim}
+#!usr/bin/env perl
+$name = ”guy”;
+print ”Hello, $name!\n”;
+\end{verbatim}
+
+\begin{verbatim*}
+	#include <stdio.h>
+	main() {
+		printf(”Hello, world.\n”);
+	}
+\end{verbatim*}
+	\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{段落与文本环境}{抄录和代码环境}
+	\begin{Verbatim}[tabsize=2]
+% \usepackage{fancyvrb}
+\SaveVerb{myverb}|#$%^&|
+\fbox{套中 \UseVerb{myverb}}
+	\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{段落与文本环境}{抄录和代码环境}
+	\begin{Verbatim}[tabsize=2]
+% 导言区使用 \usepackage{listings}
+\lstset{columns=flexible,numbers=left,
+	numberstyle=\footnotesize}
+\begin{lstlisting} % [language=C]
+/* hello.c */
+#include <stdio.h>
+main() {
+	printf(”Hello.\n”);
+}
+\end{lstlisting} 
+
+% algorithm2e, clrscode
+	\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{段落与文本环境}{抄录和代码环境}
+	\begin{Verbatim}[tabsize=2]
+\begin{tabbing}
+格式\hspace{3em} \= 作者 \\
+Plain \TeX \> 高德纳 \\
+\LaTeX \> Leslie Lamport
+\end{tabbing}
+
+\begin{tabbing}
+格式\hspace{3em} \= 作者 \kill
+Plain \TeX \> 高德纳 \\
+\LaTeX \> Leslie Lamport
+\end{tabbing}
+	\end{Verbatim}
+\end{frame}
+
+\section{脚注与边注}
+
+\begin{frame}[fragile]{段落与文本环境}{脚注与边注}
+	\begin{Verbatim}[tabsize=2]
+例如\footnote{这是一个脚注。}。
+
+\usepackage{pifont}
+\renewcommand\thefootnote{
+	\ding{\numexpr171+\value{footnote}}}
+	\end{Verbatim}
+\end{frame}
+
+\part{文档的层次结构}
+
+\section{标题和标题页}
+
+\begin{frame}[fragile]{文档的层次结构}{标题和标题页}
+	\begin{Verbatim}[tabsize=2]
+\title{杂谈勾股定理\\——勾股定理的历史与现状}
+\author{张三\\九章学堂}
+\date{庚寅盛夏}
+
+\author{张三\\九章学堂 \and 李四\\天元研究所}
+
+\ctexset{today=small}
+\ctexset[today=big]
+\ctexset[today=old]
+
+\title{杂谈勾股定理\thanks{本文由九章基金会赞助。}}
+\author{张三\thanks{九章学堂讲师。}\\九章学堂}
+	\end{Verbatim}
+\end{frame}
+
+\section{划分章节}
+
+\begin{frame}[fragile]{文档的层次结构}{划分章节}
+	\begin{Verbatim}[tabsize=2]
+part, chapter, section, subsection, subsubsection, 
+paragraph, subparagraph  % table of book
+
+\chapter*[展望与未来]{展望与未来：畅想新时代的计算机排版软件}
+\chapter[展望与未来]{展望与未来：畅想新时代的计算机排版软件}
+
+% ...
+\appendix
+\chapter{习题解答}
+% ...
+	\end{Verbatim}
+\end{frame}
+
+\section{多文件编译}
+
+\begin{frame}[fragile]{文档的层次结构}{多文件编译}
+	\begin{Verbatim}[tabsize=2]
+% languages.tex
+%
+整个文档的主文件
+\documentclass{ctexbook}
+\title{语言}
+\author{张三 \and 李四}
+% \includeonly{lang-natual}  % 只编译“自然语言”一章 
+\begin{document}
+\maketitle
+\tableofcontents
+\include{lang-natural}
+\include{lang-computer}
+\end{document}
+	\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{文档的层次结构}{多文件编译}
+	\begin{Verbatim}[tabsize=2]
+% lang-natural.tex
+%
+“自然语言”一章，不能单独编译
+\chapter{自然语言}
+
+% lang-computer.tex
+% “计算机语言”一章，不能单独编译
+\chapter{计算机语言}
+	\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{文档的层次结构}{多文件编译}
+	\begin{Verbatim}[tabsize=2]
+% main.tex
+%
+主文档
+\documentclass{ctexart}
+\input{preamble}
+% 复杂的导言区设置
+\begin{document}
+	……（文档的内容）
+\end{document}
+	\end{Verbatim}
+\end{frame}
+
+\part{定义命令与环境}
+
+\begin{frame}[fragile]{定义命令与环境}
+\begin{Verbatim}[tabsize=2]
+\newcommand\PRC{People’s Republic of \emph{China}}
+
+\newcommand\loves[2]{#1喜欢#2}
+\newcommand\hatedby[2]{#2不受#1喜欢}
+
+\newcommand\loves[3][喜欢]{{#2#1#3}}
+
+\renewcommand\abstractname{内容简介}
+
+\newcommand\Emph[1]{\emph{#1}}
+\newcommand\setEmph[1]{%
+	\renewcommand\Emph[1]{%
+		#1{##1}}}
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{定义命令与环境}
+	\begin{Verbatim}[tabsize=2]
+\newenvironment{myabstract}[1][摘要]%
+{\small
+	\begin{center}\bfseries #1\end{center}%
+	\begin{quotation}}%
+{\end{quotation}}
+	\end{Verbatim}
+\end{frame}
+
+\end{document}
